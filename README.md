@@ -6,7 +6,7 @@
 * bootstrap v4.3.1
 * Thymeleaf 3
 
-## 스프링 프로젝트 구성하기
+## 스프링 부트 프로젝트 구성하기
 * [Spring Initializr 사이트 활용](https://start.spring.io/)
 
 ## 참고사이트
