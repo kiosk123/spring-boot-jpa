@@ -16,7 +16,7 @@
  - [Spring Boot 참고 문서](https://docs.spring.io/spring-boot/docs/)
  - [쿼리 파라미터 로그 남기기](https://github.com/gavlyukovskiy/spring-boot-data-source-decorator)
     - 그레이들에서 다음과 같이 설정
-    - implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.6' 
+      - `implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.6'` 
     - 운영에서는 사용하지 말 것
 
 
@@ -30,6 +30,49 @@
 * 6. 아이템 도메인 개발
 * 7. 주문 도메인 개발
 * 8. 뷰를 포함한 완성
+
+## gradle 의존성
+
+```gradle
+plugins {
+	id 'org.springframework.boot' version '2.3.5.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'java'
+}
+
+group = 'springboot.jpa'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+    implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.6' //운영에서는 사용하지 말 것
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-devtools'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'com.h2database:h2'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
+```
 
 ## 현재 프로젝트의 의존관계 보기 gradlew 이용
 ```bash
