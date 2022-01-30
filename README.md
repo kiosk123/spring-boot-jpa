@@ -31,6 +31,10 @@
 * 7. 주문 도메인 개발
 * 8. 뷰를 포함한 완성
 
+## 현재 프로젝트의 의존관계 보기 gradlew 이용
+```bash
+./gradlew dependencies —configuration compileClasspath
+```
 ## EntityManager, EntityManagerFactory 주입 방법
 
 Spring Data JPA에서는 `@Autowired`를 이용한 주입을 지원하지만 Spring Data JPA를 사용하지 않을 경우 다음과 같이 사용한다.
